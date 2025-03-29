@@ -1,0 +1,120 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{layout}">
+<head>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<th:block th:replace="~{layout::header}"></th:block>
+<section layout:fragment="content">
+
+    <!-- Page Header Start -->
+    <div class="container-fluid bg-secondary d-flex justify-content-center align-items-center"
+         style="min-height: 410px; margin-left: 4rem; margin-right: 4rem;margin-bottom: 0; padding-bottom: 0; position: relative;">
+        <img th:src="@{/img/slideshow2.jpg}" alt="AZ Studio Shop Header Image"
+             class="position-absolute top-0 left-0 w-100" style="max-height: 100%; object-fit: cover;"/>
+        <div class="d-flex flex-column align-items-center justify-content-center text-white" style="z-index: 1;">
+        </div>
+    </div>
+    <!-- Page Header End -->
+    <div class="container-fluid pt-5">
+        <form th:action="@{/cart/checkout/payment}" th:object="${checkout}" method="post">
+            <div class="row px-xl-5">
+                <div class="col-lg-8">
+                    <div class="mb-4">
+                        <h4 class="font-weight-semi-bold mb-4">Địa chỉ nhận hàng</h4>
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>Họ</label>
+                                <input th:field="*{firstName}" class="form-control" type="text" placeholder="Trần Văn" required>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Tên</label>
+                                <input th:field="*{lastName}" class="form-control" type="text" placeholder="A" required>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>E-mail</label>
+                                <input th:field="*{email}" class="form-control" type="text"
+                                       placeholder="example@email.com" required>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Số điện thoại</label>
+                                <input th:field="*{phone}" class="form-control" type="text"
+                                       placeholder="+84123 456 789" required>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Địa chỉ</label>
+                                <input th:field="*{address}" class="form-control" type="text" placeholder="Hồ Chí Minh" required>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Ghi chú</label>
+                                <input th:field="*{note}" class="form-control" type="text"
+                                       placeholder="giao hàng đúng nơi">
+                            </div>
+                            <a href="/cart" class="btn btn-block btn-secondary my-3 py-3">Quay lại</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card border-secondary mb-5">
+                        <div class="card-header bg-secondary border-0">
+                            <h4 class="font-weight-semi-bold m-0" th:text="'Tổng số đơn hàng:'+${carts.size}">Tổng số
+                                đơn hàng</h4>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="font-weight-medium mb-3">Sản phẩm</h5>
+                            <div th:each="cart : ${carts}">
+                                <div class="d-flex justify-content-between">
+                                    <p th:text="${cart.tenSp}"></p>
+                                </div>
+                                <!-- Kết thúc vòng lặp -->
+                                <hr class="mt-0">
+                                <div class="d-flex justify-content-between mb-3 pt-1">
+                                    <h6 class="font-weight-medium">Tổng đơn giá</h6>
+                                    <h6 class="font-weight-medium" th:text="${cart.donGia}+'00 VNĐ'">Đơn giá VNĐ</h6>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3 pt-1">
+                                <h6 class="font-weight-medium">Đơn giá</h6>
+                                <h6 class="font-weight-medium" th:text="${totalAmount}+ '00 VNĐ'">Tổng đơn giá VNĐ</h6>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <h6 class="font-weight-medium">Phí ship</h6>
+                                <h6 class="font-weight-medium">30.000 VNĐ</h6>
+                            </div>
+                        </div>
+                        <div class="card-footer border-secondary bg-transparent">
+                            <div class="d-flex justify-content-between mt-2">
+                                <h5 class="font-weight-bold">Tổng Tiền</h5>
+                                <h5 class="font-weight-bold" th:text="${totalAmount+30}+ '00 VNĐ'">Tổng tiền cộng phí
+                                    vận chuyển VNĐ</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-secondary mb-5">
+                        <div class="card-header bg-secondary border-0">
+                            <h4 class="font-weight-semi-bold m-0">Phương thức thanh toán</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="vnpayPayment" name="payment" class="custom-control-input"
+                                           value="2">
+                                    <label class="custom-control-label" for="vnpayPayment">Thanh Toán bằng VNPay</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer border-secondary bg-transparent">
+                            <button type="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">
+                                Tiến hành thanh toán
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+</html>

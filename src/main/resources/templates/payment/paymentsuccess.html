@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Thanh toán thành công</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .payment-success {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .payment-success img.gif {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .payment-success h1 {
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        .payment-success p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .payment-success .info {
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        .payment-success .info .row {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .payment-success .info .label {
+            font-weight: bold;
+            width: 200px;
+        }
+
+        .payment-success .info .value {
+            flex: 1;
+        }
+
+        .payment-success .buttons {
+            margin-top: 30px;
+        }
+
+        .payment-success .btn {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+
+        .payment-success .btn.tt {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .payment-success .btn.tt:hover {
+            background-color: #0056b3;
+        }
+
+        .payment-success .btn.lh {
+            background-color: #ffc107;
+            color: white;
+        }
+
+        .payment-success .btn.lh:hover {
+            background-color: #e0a800;
+        }
+    </style>
+</head>
+
+<body>
+<th:block th:replace="~{layout::header}"></th:block>
+
+<div class="container mt-5">
+    <section layout:fragment="content">
+        <div class="container payment-success">
+            <img class="gif" th:src="@{/img/img_3.png}" alt="Payment Success">
+            <h1>Thanh toán thành công!</h1>
+            <p>Thanh toán đã thực hiện thành công.</p>
+            <p>Trong vòng 30 phút EuroShop sẽ liên hệ xác nhận thông tin giao hàng cho quý khách.</p>
+
+            <div class="buttons mt-3">
+                <div class="text-center">
+                    <a th:href="@{/shop}" class="btn btn-primary btn-lg mr-3">Tiếp tục mua sắm</a>
+                </div>
+            </div>
+
+            <div class="buttons mt-3">
+                <div class="text-center">
+                    <a th:href="@{/contact}" class="btn btn-secondary btn-lg">Liên hệ hỗ trợ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<th:block th:replace="~{layout::footer}"></th:block>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

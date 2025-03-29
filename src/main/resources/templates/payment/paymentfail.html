@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:replace="~{layout::header}"></th:block>
+
+<div class="container mt-5">
+    <section layout:fragment="content">
+
+        <div class="container payment-fail">
+            <img class="gif" src="img/gif/giffail.gif" alt="Payment Fail">
+            <h1>Thanh toán Thất bại!</h1>
+            <p>Rất tiếc thanh toán không thành công.</p>
+            <p>Vui lòng thử lại.Xin cảm ơn quý khách</p>
+
+            <div class="info">
+                <div class="row">
+                    <div class="label">Mã lỗi:</div>
+                    <div class="value">12345</div>
+                </div>
+                <div class="row">
+                    <div class="label">Mô tả:</div>
+                    <div class="value">Lỗi kết nối với ngân hàng</div>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <a href="/cart" class="btn tt">Quay lại giỏ hàng</a>
+                <a th:href="@{/contact}" class="btn lh">Liên hệ hỗ trợ</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<th:block th:replace="~{layout::footer}"></th:block>
+</body>
+</html>

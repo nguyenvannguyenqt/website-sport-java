@@ -1,0 +1,224 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from www.ecommerce-admin.com/demo/page-index-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Dec 2021 02:38:57 GMT -->
+<head >
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Sample title - Ecommerce admin dashboard template</title>
+
+    <link th:href="@{/admin/images/favicon.ico}" rel="shortcut icon" type="image/x-icon">
+    <link th:href="@{/admin/css/bootstrapf9e3.css?v=1.1}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/admin/css/uif9e3.css?v=1.1}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/admin/css/responsivef9e3.css?v=1.1}" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/admin/fonts/material-icon/css/round.css}"/>
+</head>
+<body>
+
+<b class="screen-overlay"></b>
+<!-- * modal delete -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Xoá sản phẩm</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn có chắc chắn muốn xoá sản phẩm này không?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                <button type="button" class="btn btn-primary bg-danger">Đồng ý</button>
+            </div>
+        </div>
+    </div>
+</div>
+<aside class="navbar-aside" id="offcanvas_aside">
+    <div class="aside-top">
+        <a href="page-index-1.html" class="brand-wrap">
+            <img th:src="@{/admin/images/logo.png}" height="46" class="logo" alt="Ecommerce dashboard template">
+        </a>
+        <div>
+            <button class="btn btn-icon btn-aside-minimize"><i class="text-muted material-icons md-menu_open"></i>
+            </button>
+        </div>
+    </div> <!-- aside-top.// -->
+
+    <nav>
+        <ul class="menu-aside">
+            <li class="menu-item active">
+                <a class="menu-link" href="page-index-1.html"> <i class="icon material-icons md-home"></i>
+                    <span class="text">Bảng điều khiển</span>
+                </a>
+            </li>
+            <a class="menu-link has-submenu" href="src/main/resources/admin/products/products-list.html"> <i
+                    class="icon material-icons md-shopping_bag"></i>
+                <span class="text">Sản phẩm</span>
+            </a>
+            <a th:href="@{/products}" class="nav-item nav-link active">Quản lí sản phẩm</a>
+            <a th:href="@{/brands}" class="nav-item nav-link active">Quản lí brands</a>
+            <a th:href="@{/countries}" class="nav-item nav-link active">Quản lí countries</a>
+            <a th:href="@{/leagueclubs}" class="nav-item nav-link active">Quản lí leagueclubs</a>
+            <a th:href="@{/regions}" class="nav-item nav-link active">Quản lí regions</a>
+            <a th:href="@{/teamclubs}" class="nav-item nav-link active">Quản lí teamclubs</a>
+            <li class="menu-item menu-item has-submenu">
+                <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-shopping_cart"></i>
+                    <span class="text">Đơn hàng</span>
+                </a>
+                <div class="submenu">
+                    <a href="page-orders-2.html">Danh sách đơn hàng</a>
+                    <a href="page-orders-detail.html">Chi tiết đơn hàng</a>
+                </div>
+            </li>
+            <a class="menu-link menu-item has-submenu" href="page-sellers-cards.html"> <i
+                    class="icon material-icons md-person"></i>
+                <span class="text">Quản lý người dùng</span>
+            </a>
+            <li class="menu-item">
+                <a class="menu-link" href="/contact_list"> <i class="icon material-icons md-comment"></i>
+                    <span class="text">Danh sách liên hệ</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" disabled href="#"> <i class="icon material-icons md-pie_chart"></i>
+                    <span class="text">Thống kê</span>
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <ul class="menu-aside">
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
+                    <span class="text">Cài đặt</span>
+                </a>
+                <div class="submenu">
+                    <a href="page-settings-1.html">Cài đặt tài khoản</a>
+                    <a href="page-settings-2.html">Cài đặt trang web</a>
+                </div>
+            </li>
+        </ul>
+        <br>
+        <br>
+    </nav>
+</aside>
+
+<main class="main-wrap">
+    <header class="main-header navbar" th:fragment="header">
+        <div class="col-search">
+            <form class="searchform">
+                <div class="input-group">
+                    <input list="search_terms" type="text" class="form-control" placeholder="Tìm kiếm...">
+                    <button class="btn btn-light bg" type="button"><i class="material-icons md-search"></i></button>
+                </div>
+                <datalist id="search_terms">
+                    <option value="Products">
+                    <option value="New orders">
+                    <option value="Apple iphone">
+                    <option value="Ahmed Hassan">
+                </datalist>
+            </form>
+        </div>
+        <div class="col-nav">
+            <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"><i
+                    class="md-28 material-icons md-menu"></i></button>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link btn-icon" onclick="darkmode(this)" title="Dark mode" href="#"> <i
+                            class="material-icons md-nights_stay"></i> </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-icon" href="#"> <i class="material-icons md-notifications_active"></i> </a>
+                </li>
+                <li class="dropdown nav-item">
+                    <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#"> <img class="img-xs rounded-circle"
+                                                                                        th:src="@{/admin/images/people/avatar1.jpg}"
+                                                                                        alt="User"></a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a class="dropdown-item" href="page-seller-detail.html">Tài khoản</a>
+                        <a class="dropdown-item" href="page-settings-1.html">Cài đặt</a>
+                        <a class="dropdown-item text-danger" href="#">Đăng xuất</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- =================================================================================================== -->
+    <section class="content-main">
+        <h1>Cập nhật câu lạc bộ</h1>
+        <form th:action="@{/leagueclubs/edit/{id}(id=${leagueClub.id})}" th:object="${leagueClub}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+            <div class="mb-3">
+                <label for="id" class="form-label">Id:</label>
+                <input readonly id="id" th:value="${leagueClub.id}" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Tên câu lạc bộ:</label>
+                <input type="text" th:field="*{nameLeague}" class="form-control" id="name" required>
+                <div class="text-danger" th:if="${#fields.hasErrors('nameLeague')}"
+                     th:errors="*{nameLeague}"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Cập nhật câu lạc bộ</button>
+            <a th:href="@{/leagueclubs}" class="btn btn-link">Hủy</a>
+        </form>
+    </section> <!-- content-main end// -->
+    <!-- =================================================================================================== -->
+</main>
+
+<script type="text/javascript">
+	if(localStorage.getItem("darkmode")){
+		var body_el = document.body;
+		body_el.className += 'dark';
+	}
+</script>
+
+<script th:src="@{/admin/js/jquery-3.5.0.min.js}"></script>
+<script th:src="@{/admin/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/admin/js/script.js?v=1.1}"></script>
+<script th:src="@{/admin/plugins/chart.js/chart.min.js}"></script>
+<script th:src="@{/admin/js/chart.js}"></script>
+<!-- ChartJS files-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<!-- Custom JS -->
+<script th:src="@{/admin/js/scriptc619.js?v=1.0}" type="text/javascript"></script>
+<!-- ChartJS customize-->
+<script>
+	var ctx = document.getElementById('myChart').getContext('2d');
+	var chart = new Chart(ctx, {
+	    // The type of chart we want to create
+	    type: 'line',
+
+	    // The data for our dataset
+	    data: {
+	        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+	        datasets: [
+	        {
+	            label: 'Sales',
+	            backgroundColor: 'rgb(44, 120, 220)',
+	            borderColor: 'rgb(44, 120, 220)',
+	            data: [18, 17, 4, 3, 2, 20, 25, 31, 25, 22, 20, 9]
+	        },
+	        {
+	            label: 'Visitors',
+	            backgroundColor: 'rgb(180, 200, 230)',
+	            borderColor: 'rgb(180, 200, 230)',
+	            data: [40, 20, 17, 9, 23, 35, 39, 30, 34, 25, 27,18]
+	        }
+
+	        ]
+	    },
+
+	    // Configuration options go here
+	    options: {}
+	});
+
+</script>
+</body>
+</html>
+
+
